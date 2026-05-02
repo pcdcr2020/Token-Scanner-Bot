@@ -18,7 +18,8 @@ async function getTokens() {
     "https://api.dexscreener.com/latest/dex/pairs/solana"
   );
 
-  return res.data.pairs.map(p => ({
+  const pairs = res.data.pairs.slice(0, 50);
+  return pairs.map(p => ({
     symbol: p.baseToken.symbol,
     price: Number(p.priceUsd),
     volume1h: p.volume.h1 || 0,
@@ -78,5 +79,5 @@ async function run() {
   }
 }
 
-setInterval(run, 60000);
+setInterval(run, 120000);
 run();
