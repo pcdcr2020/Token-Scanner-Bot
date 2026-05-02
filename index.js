@@ -15,7 +15,7 @@ function sendAlert(msg) {
 // FETCH DEXSCREENER
 async function getTokens() {
   const res = await axios.get(
-    "https://api.dexscreener.com/latest/dex/pairs/solana"
+    "https://api.dexscreener.com/latest/dex/search?q=solana"
   );
 
   const pairs = res.data.pairs.slice(0, 50);
